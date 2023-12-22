@@ -6,7 +6,7 @@
 /*   By: brmoretti <brmoretti@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/17 12:29:41 by brmoretti         #+#    #+#             */
-/*   Updated: 2023/12/19 00:26:31 by brmoretti        ###   ########.fr       */
+/*   Updated: 2023/12/21 22:29:21 by brmoretti        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,15 @@ int	main(int argc, char **argv)
 	if (!stacks.a || !stacks.b)
 		clear_stacks(&stacks, malloc_error);
 	stack_a_fill(argv, &stacks);
-	debug_print_stack(stacks.a);
+	debug_print_stacks(&stacks);
+	pb(&stacks);
+	pb(&stacks);
+	pb(&stacks);
+	debug_print_stacks(&stacks);
+	rrb(&stacks);
+	rra(&stacks);
+	debug_print_stacks(&stacks);
+	debug_print_stats(&stacks);
 	clear_stacks(&stacks, not_error);
 	return (0);
 }

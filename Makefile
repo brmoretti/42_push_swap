@@ -10,7 +10,11 @@ CC_FLAGS			=	-Wall	\
 SRC_DIR				=	src
 SRC_FILES			=	debug_tools.c	\
 						err.c			\
-						main.c
+						main.c			\
+						push.c			\
+						rev_rotate.c	\
+						rotate.c		\
+						swap.c
 SRCS				=	$(addprefix $(SRC_DIR)/, $(SRC_FILES))
 INCLUDE_DIR			=	include
 INCLUDE_FILES		=	push_swap.h
@@ -19,16 +23,16 @@ BUILD_DIR			=	build
 OBJS				=	$(SRC_FILES:.c=.o)
 BUILDS				=	$(addprefix $(BUILD_DIR)/, $(OBJS))
 
-#≻───░⋆ ✪ LIBFT EXTRA ✪ ⋆░───────────────────────────────────────────────────≺#
-LIBFT_REPO			=	https://github.com/brmoretti/42_libft_extra.git
-LIBFT_LIB_NAME		=	libft.a
-LIBFT_DIR			=	libft_extra
-LIBFT_INCLUDE_DIR	=	$(LIBFT_DIR)/include
-LIBFT_LIB			=	$(LIBFT_DIR)/$(LIBFT_LIB_NAME)
-LIBFT_LIBS			=	-lft
-LIBFT_CC			=	-I./$(LIBFT_INCLUDE_DIR)	\
-						-L./$(LIBFT_DIR)			\
-						$(LIBFT_LIBS)
+#≻───░⋆ ✪ LFTPRINTF ✪ ⋆░─────────────────────────────────────────────────────≺#
+LFTPRINTF_REPO			=	https://github.com/brmoretti/42_ft_printf.git
+LFTPRINTF_LIB_NAME		=	libftprintf.a
+LFTPRINTF_DIR			=	ft_printf
+LFTPRINTF_INCLUDE_DIR	=	$(LFTPRINTF_DIR)/include
+LFTPRINTF_LIB			=	$(LFTPRINTF_DIR)/$(LFTPRINTF_LIB_NAME)
+LFTPRINTF_LIBS			=	-lftprintf
+LFTPRINTF_CC			=	-I./$(LFTPRINTF_INCLUDE_DIR)	\
+							-L./$(LFTPRINTF_DIR)			\
+							$(LFTPRINTF_LIBS)
 
 #≻───░⋆ ✪ COLORS ✪ ⋆░────────────────────────────────────────────────────────≺#
 BLUE				=	\033[0;34m
@@ -43,11 +47,11 @@ all: $(NAME)
 
 bonus: $(NAME)
 
-$(NAME): $(LIBFT_LIB) $(BUILD_DIR) $(BUILDS) $(INCLUDES)
+$(NAME): $(LFTPRINTF_LIB) $(BUILD_DIR) $(BUILDS) $(INCLUDES)
 	@ $(CC) -o $@			\
 	  $(BUILDS)				\
 	  -I./$(INCLUDE_DIR)	\
-	  $(LIBFT_CC)			\
+	  $(LFTPRINTF_CC)			\
 	  $(CC_FLAGS)
 	  @ printf "$(GREEN)$@$(DEFAULT) successfully generated\n"
 
@@ -58,31 +62,31 @@ $(BUILD_DIR)/%.o: $(SRC_DIR)/%.c $(INCLUDES)
 	@ printf "$(MAGENTA)$< $(BLUE)->$(GREEN) $@$(DEFAULT)\n"
 	@ $(CC) -c $<				\
 	  -I./$(INCLUDE_DIR)		\
-	  -I./$(LIBFT_INCLUDE_DIR)	\
+	  -I./$(LFTPRINTF_INCLUDE_DIR)	\
 	  -o $@						\
 	  $(CC_FLAGS)
 
-clean: clean_libft
+clean: clean_lftprintf
 	@ rm -rf $(BUILD_DIR)
 
-fclean: fclean_libft clean
+fclean: fclean_lftprintf clean
 	@ rm -rf $(NAME)
 
 re: fclean all
 
-$(LIBFT_LIB): $(LIBFT_DIR)
-	@ make -s -C $(LIBFT_DIR)
+$(LFTPRINTF_LIB): $(LFTPRINTF_DIR)
+	@ make -s -C $(LFTPRINTF_DIR)
 
-$(LIBFT_DIR):
-	@ git clone $(LIBFT_REPO) $(LIBFT_DIR)
+$(LFTPRINTF_DIR):
+	@ git clone $(LFTPRINTF_REPO) $(LFTPRINTF_DIR)
 
-clean_libft: $(LIBFT_DIR)
-	@ make -s -C $(LIBFT_DIR) clean
+clean_lftprintf: $(LFTPRINTF_DIR)
+	@ make -s -C $(LFTPRINTF_DIR) clean
 
-fclean_libft: $(LIBFT_DIR)
-	@ make -s -C $(LIBFT_DIR) fclean
+fclean_lftprintf: $(LFTPRINTF_DIR)
+	@ make -s -C $(LFTPRINTF_DIR) fclean
 
-clear_libft:
-	@ rm -rf $(LIBFT_DIR)
+clear_lftprintf:
+	@ rm -rf $(LFTPRINTF_DIR)
 
-clear: fclean clear_libft
+clear: fclean clear_lftprintf
