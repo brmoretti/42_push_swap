@@ -4,17 +4,21 @@ CC					=	cc
 CC_FLAGS			=	-Wall	\
 						-Wextra	\
 						-Werror	\
-						-g3		#TEST ONLY
+						-g3		#TEST ONLY REMEMBER TO REMOVE
 
 #≻───░⋆ ✪ PROJECT DIRECTORIES & FILES ✪ ⋆░───────────────────────────────────≺#
 SRC_DIR				=	src
-SRC_FILES			=	debug_tools.c	\
-						err.c			\
-						main.c			\
-						push.c			\
-						rev_rotate.c	\
-						rotate.c		\
-						swap.c
+SRC_FILES			=	algo.c				\
+						debug_tools.c		\
+						depths.c			\
+						err.c				\
+						main.c				\
+						misc.c				\
+						push.c				\
+						rev_rotate.c		\
+						rotate.c			\
+						swap.c				\
+						validations.c
 SRCS				=	$(addprefix $(SRC_DIR)/, $(SRC_FILES))
 INCLUDE_DIR			=	include
 INCLUDE_FILES		=	push_swap.h

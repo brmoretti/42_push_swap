@@ -5,7 +5,7 @@
             "includePath": [
                 "${workspaceFolder}/**",
                 "${workspaceFolder}/include/**",
-                "${workspaceFolder}/libft_extra/include/**"
+                "${workspaceFolder}/ft_printf/include/**"
             ],
             "defines": [],
             "compilerPath": "/usr/bin/gcc",

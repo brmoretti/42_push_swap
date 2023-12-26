@@ -6,7 +6,7 @@
 /*   By: brmoretti <brmoretti@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 21:29:47 by brmoretti         #+#    #+#             */
-/*   Updated: 2023/12/21 22:28:12 by brmoretti        ###   ########.fr       */
+/*   Updated: 2023/12/22 16:12:36 by brmoretti        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,29 +14,30 @@
 
 static void	rotate(t_list *stack)
 {
-	t_element	*tmp;
+	t_element	*el;
 
-	if (stack->list_size > 1)
+	if (stack->size > 1)
 	{
-		tmp = stack->first;
-		stack->first = tmp->next;
-		stack->list_size--;
-		ft_lstadd_back(stack, tmp);
+		el = ft_lstpop(stack, 0);
+		ft_lstadd_back(stack, el);
 	}
 }
 
 void	ra(t_stacks *stacks)
 {
 	rotate(stacks->a);
+	ft_putstr_fd("ra\n", 1);
 }
 
 void	rb(t_stacks *stacks)
 {
 	rotate(stacks->b);
+	ft_putstr_fd("rb\n", 1);
 }
 
 void	rr(t_stacks *stacks)
 {
 	rotate(stacks->a);
 	rotate(stacks->b);
+	ft_putstr_fd("rr\n", 1);
 }

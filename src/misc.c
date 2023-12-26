@@ -1,36 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push.c                                             :+:      :+:    :+:   */
+/*   misc.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: brmoretti <brmoretti@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/21 18:41:24 by brmoretti         #+#    #+#             */
-/*   Updated: 2023/12/22 16:10:24 by brmoretti        ###   ########.fr       */
+/*   Created: 2023/12/26 16:32:12 by brmoretti         #+#    #+#             */
+/*   Updated: 2023/12/26 16:37:39 by brmoretti        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
 
-static void	push(t_list *from, t_list *to)
+unsigned int	ft_max(unsigned int a, unsigned int b)
 {
-	t_element	*el_from;
-
-	if (from->size >= 1)
-	{
-		el_from = ft_lstpop(from, 0);
-		ft_lstadd_front(to, el_from);
-	}
+	if (a > b)
+		return (a);
+	return (b);
 }
 
-void	pa(t_stacks *stacks)
+unsigned int	ft_min(unsigned int a, unsigned int b)
 {
-	push(stacks->b, stacks->a);
-	ft_putstr_fd("pa\n", 1);
-}
-
-void	pb(t_stacks *stacks)
-{
-	push(stacks->a, stacks->b);
-	ft_putstr_fd("pb\n", 1);
+	if (a < b)
+		return (a);
+	return (b);
 }
