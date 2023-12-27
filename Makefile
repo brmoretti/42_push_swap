@@ -9,6 +9,7 @@ CC_FLAGS			=	-Wall	\
 #≻───░⋆ ✪ PROJECT DIRECTORIES & FILES ✪ ⋆░───────────────────────────────────≺#
 SRC_DIR				=	src
 SRC_FILES			=	algo.c				\
+						conditional_push.c	\
 						debug_tools.c		\
 						depths.c			\
 						err.c				\
@@ -17,6 +18,10 @@ SRC_FILES			=	algo.c				\
 						push.c				\
 						rev_rotate.c		\
 						rotate.c			\
+						stack_rule_by_size.c\
+						stacking_a.c		\
+						stacking_b.c		\
+						stacks_utils.c		\
 						swap.c				\
 						validations.c
 SRCS				=	$(addprefix $(SRC_DIR)/, $(SRC_FILES))

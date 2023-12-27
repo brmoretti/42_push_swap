@@ -6,13 +6,13 @@
 /*   By: brmoretti <brmoretti@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 18:40:49 by brmoretti         #+#    #+#             */
-/*   Updated: 2023/12/23 00:52:30 by brmoretti        ###   ########.fr       */
+/*   Updated: 2023/12/27 11:16:27 by brmoretti        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int check_int_limits(char *nptr)
+static int	check_int_limits(char *nptr)
 {
 	long long	i;
 
