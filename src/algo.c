@@ -6,7 +6,7 @@
 /*   By: brmoretti <brmoretti@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 23:23:45 by brmoretti         #+#    #+#             */
-/*   Updated: 2023/12/27 19:02:24 by brmoretti        ###   ########.fr       */
+/*   Updated: 2023/12/28 10:04:33 by brmoretti        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,8 @@ static void	algo_phase_two(t_stacks *stacks)
 void	algo(t_stacks *stacks)
 {
 	// debug_print_stacks(stacks);
+	if (check_if_ok(stacks))
+		return ;
 	stack_rule_by_size(stacks);
 	if (check_if_ok(stacks))
 		return ;

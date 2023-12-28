@@ -6,7 +6,7 @@
 /*   By: brmoretti <brmoretti@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/17 12:29:41 by brmoretti         #+#    #+#             */
-/*   Updated: 2023/12/27 18:15:04 by brmoretti        ###   ########.fr       */
+/*   Updated: 2023/12/28 14:16:56 by brmoretti        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,38 +20,42 @@ void	clear_stacks(t_stacks *stacks, int error)
 		errors(error);
 }
 
-static void	stack_a_fill(char **argv, t_stacks *stacks)
+static void	stack_a_fill(char **tab, t_stacks *stacks)
 {
 	t_element	*el;
 	int			*nb;
 	int			i;
 
 	i = 0;
-	while (argv[++i])
+	while (tab[i])
 	{
 		nb = malloc(sizeof(int));
 		if (!nb)
 			clear_stacks(stacks, malloc_error);
-		*nb = ft_atoi(argv[i]);
+		*nb = ft_atoi(tab[i++]);
 		el = ft_lstnewelement((void *)nb);
 		if (!el)
 			clear_stacks(stacks, malloc_error);
 		ft_lstadd_back(stacks->a, el);
 	}
+	clear_tab(tab);
 }
 
 int	main(int argc, char **argv)
 {
+	char		**tab;
 	t_stacks	stacks;
 
-	args_validation(argc, argv);
+	tab = args_validation(argc, argv);
+	ft_bzero(&stacks, sizeof(t_stacks));
 	stacks.a = ft_calloc(1, sizeof(t_list));
 	stacks.b = ft_calloc(1, sizeof(t_list));
 	if (!stacks.a || !stacks.b)
 		clear_stacks(&stacks, malloc_error);
-	stack_a_fill(argv, &stacks);
+	stack_a_fill(tab, &stacks);
 	find_duplicates(&stacks);
 	algo(&stacks);
+	// debug_print_stacks(&stacks);
 	clear_stacks(&stacks, not_error);
 	return (0);
 }

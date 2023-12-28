@@ -6,7 +6,7 @@
 /*   By: brmoretti <brmoretti@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/27 12:06:10 by brmoretti         #+#    #+#             */
-/*   Updated: 2023/12/27 18:34:49 by brmoretti        ###   ########.fr       */
+/*   Updated: 2023/12/28 08:56:04 by brmoretti        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static void	stack_of_three(t_stacks *stacks)
 		;
 	else if (first < third && second > third)
 	{
-		ra(stacks);
+		rra(stacks);
 		sa(stacks);
 	}
 	else if (first < third && second < first)
@@ -40,15 +40,17 @@ static void	stack_of_three(t_stacks *stacks)
 		rra(stacks);
 	else if (first > third && second <  third)
 		ra(stacks);
-	else if (first > second && second > first)
+	else if (first > second && second > third)
 	{
 		sa(stacks);
-		ra(stacks);
+		rra(stacks);
 	}
 }
 
 void	stack_rule_by_size(t_stacks *stacks)
 {
+	if (stacks->a->size == 1)
+		return ;
 	if (stacks->a->size == 2)
 	{
 		stack_of_two(stacks);
@@ -64,5 +66,7 @@ void	stack_rule_by_size(t_stacks *stacks)
 		while (stacks->a->size > 3 && stacks->b->size < 2)
 			pb(stacks);
 		b_properties(stacks);
+		if (stacks->a->size == 3)
+			stack_rule_by_size(stacks);
 	}
 }

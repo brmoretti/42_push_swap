@@ -60,7 +60,7 @@ $(NAME): $(LFTPRINTF_LIB) $(BUILD_DIR) $(BUILDS) $(INCLUDES)
 	@ $(CC) -o $@			\
 	  $(BUILDS)				\
 	  -I./$(INCLUDE_DIR)	\
-	  $(LFTPRINTF_CC)			\
+	  $(LFTPRINTF_CC)		\
 	  $(CC_FLAGS)
 	  @ printf "$(GREEN)$@$(DEFAULT) successfully generated\n"
 
@@ -69,10 +69,10 @@ $(BUILD_DIR):
 
 $(BUILD_DIR)/%.o: $(SRC_DIR)/%.c $(INCLUDES)
 	@ printf "$(MAGENTA)$< $(BLUE)->$(GREEN) $@$(DEFAULT)\n"
-	@ $(CC) -c $<				\
-	  -I./$(INCLUDE_DIR)		\
+	@ $(CC) -c $<					\
+	  -I./$(INCLUDE_DIR)			\
 	  -I./$(LFTPRINTF_INCLUDE_DIR)	\
-	  -o $@						\
+	  -o $@							\
 	  $(CC_FLAGS)
 
 clean: clean_lftprintf

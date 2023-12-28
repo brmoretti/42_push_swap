@@ -6,7 +6,7 @@
 /*   By: brmoretti <brmoretti@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/27 17:38:09 by brmoretti         #+#    #+#             */
-/*   Updated: 2023/12/27 18:54:41 by brmoretti        ###   ########.fr       */
+/*   Updated: 2023/12/27 22:32:08 by brmoretti        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void	stack_back_to_a(t_stacks *stacks, int nb_to_push)
 {
 	if (nb_to_push > el_int(stacks->a_max))
 	{
-		deliver_on_top_a(stacks, stacks->a_max);
+		deliver_on_top_a(stacks, stacks->a_min);
 		stacks->a_max = stacks->b->first;
 	}
 	else if (nb_to_push < el_int(stacks->a_min))

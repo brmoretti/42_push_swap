@@ -6,7 +6,7 @@
 /*   By: brmoretti <brmoretti@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/17 12:44:20 by brmoretti         #+#    #+#             */
-/*   Updated: 2023/12/27 18:50:14 by brmoretti        ###   ########.fr       */
+/*   Updated: 2023/12/28 12:37:22 by brmoretti        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@
 enum	e_errors
 {
 	not_error,
-	insufficient_args,
 	not_digit,
 	integer_overflow,
 	malloc_error,
@@ -63,7 +62,7 @@ typedef struct s_el_data
 }	t_el_data;
 
 void			errors(int error_code);
-void			args_validation(int argc, char **argv);
+char			**args_validation(int argc, char **argv);
 void			find_duplicates(t_stacks *stacks);
 void			clear_stacks(t_stacks *stacks, int error);
 
@@ -92,6 +91,7 @@ void			deliver_on_top_a(t_stacks *stacks, t_element *el_to_deliver);
 int				el_int(t_element *el);
 unsigned int	ft_max(unsigned int a, unsigned int b);
 unsigned int	ft_min(unsigned int a, unsigned int b);
+char			**clear_tab(char **tab);
 
 //DEBUG TOOLS
 void			debug_print_stacks(t_stacks *stacks);

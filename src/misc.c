@@ -6,7 +6,7 @@
 /*   By: brmoretti <brmoretti@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 16:32:12 by brmoretti         #+#    #+#             */
-/*   Updated: 2023/12/27 11:17:09 by brmoretti        ###   ########.fr       */
+/*   Updated: 2023/12/28 12:35:30 by brmoretti        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,4 +29,15 @@ unsigned int	ft_min(unsigned int a, unsigned int b)
 	if (a < b)
 		return (a);
 	return (b);
+}
+
+char	**clear_tab(char **tab)
+{
+	unsigned int	i;
+
+	i = 0;
+	while (tab[i])
+		free (tab[i++]);
+	free (tab);
+	return (NULL);
 }

@@ -6,7 +6,7 @@
 /*   By: brmoretti <brmoretti@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/27 11:09:27 by brmoretti         #+#    #+#             */
-/*   Updated: 2023/12/27 11:19:36 by brmoretti        ###   ########.fr       */
+/*   Updated: 2023/12/28 10:01:53 by brmoretti        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,10 @@ static unsigned int	rb_moves_edge(t_stacks *stacks, int nb_to_push)
 	while (el)
 	{
 		if (nb_to_push > el_int(stacks->b_max)
-			&& (el == stacks->b_max || el == stacks->b_min))
+			&& (el == stacks->b_max))
 			break ;
 		if (nb_to_push < el_int(stacks->b_min)
-			&& (el == stacks->b_max || el == stacks->b_min))
+			&& (el == stacks->b_min))
 		{
 			pos++;
 			break ;
@@ -52,9 +52,9 @@ static unsigned int	rb_moves(t_stacks *stacks, int nb_to_push)
 		prev_el = el->prev;
 		if (!prev_el)
 			prev_el = stacks->b->last;
-		if (el == stacks->b_min && prev_el == stacks->b_max)
+		if (el == stacks->b_max)
 			;
-		else if (el_int(prev_el) < nb_to_push && el_int(el) > nb_to_push)
+		else if (el_int(prev_el) > nb_to_push && el_int(el) < nb_to_push)
 			break ;
 		pos++;
 		el = el->next;

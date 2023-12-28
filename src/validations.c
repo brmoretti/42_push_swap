@@ -6,7 +6,7 @@
 /*   By: brmoretti <brmoretti@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 18:40:49 by brmoretti         #+#    #+#             */
-/*   Updated: 2023/12/27 11:16:27 by brmoretti        ###   ########.fr       */
+/*   Updated: 2023/12/28 12:49:46 by brmoretti        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,22 +24,56 @@ static int	check_int_limits(char *nptr)
 	return (1);
 }
 
-void	args_validation(int argc, char **argv)
+static char	**create_args_tab(int argc, char **argv)
+{
+	char	**tab;
+	int		i;
+
+	if (argc == 2)
+		tab = ft_split(argv[1], ' ');
+	else
+	{
+		tab = ft_calloc(argc, sizeof(char *));
+		if (!tab)
+			errors(malloc_error);
+		i = 0;
+		while (++i < argc)
+		{
+			tab[i - 1] = ft_strdup(argv[i]);
+			if (!tab[i - 1])
+				clear_tab(tab);
+		}
+	}
+	if (!tab)
+		errors(malloc_error);
+	return (tab);
+}
+
+
+char	**args_validation(int argc, char **argv)
 {
 	int		i;
-	char	*str;
+	char	**tab;
 
 	if (argc < 2)
-		errors(insufficient_args);
+		exit(EXIT_SUCCESS);
+	else
+		tab = create_args_tab(argc, argv);
 	i = 0;
-	while (argv[++i])
+	while (tab[i])
 	{
-		str = argv[i];
-		if (check_int_limits(str) == 0)
+		if (check_int_limits(tab[i]) == 0)
+		{
+			clear_tab(tab);
 			errors(integer_overflow);
-		if (!ft_strisinteger(str))
+		}
+		if (!ft_strisinteger(tab[i++]))
+		{
+			clear_tab(tab);
 			errors(not_digit);
+		}
 	}
+	return (tab);
 }
 
 void	find_duplicates(t_stacks *stacks)
