@@ -6,7 +6,7 @@
 /*   By: brmoretti <brmoretti@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/29 16:16:51 by brmoretti         #+#    #+#             */
-/*   Updated: 2023/12/29 21:10:53 by brmoretti        ###   ########.fr       */
+/*   Updated: 2023/12/30 15:06:41 by brmoretti        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ static void	instructions_fill(t_stacks *stacks, t_list *instructions)
 t_list	*get_instructions(t_stacks *stacks)
 {
 	t_list	*instructions;
-	
+
 	instructions = ft_calloc(1, sizeof(t_list));
 	if (!instructions)
 		clear_heap(stacks, NULL, malloc_error);

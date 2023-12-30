@@ -6,7 +6,7 @@
 /*   By: brmoretti <brmoretti@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/29 10:01:35 by brmoretti         #+#    #+#             */
-/*   Updated: 2023/12/29 21:10:58 by brmoretti        ###   ########.fr       */
+/*   Updated: 2023/12/30 15:10:51 by brmoretti        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,17 +51,17 @@ typedef struct s_stacks
 	t_list		*b;
 }	t_stacks;
 
-void			sa(t_stacks *stacks);
-void			sb(t_stacks *stacks);
-void			ss(t_stacks *stacks);
-void			pa(t_stacks *stacks);
-void			pb(t_stacks *stacks);
-void			ra(t_stacks *stacks);
-void			rb(t_stacks *stacks);
-void			rr(t_stacks *stacks);
-void			rra(t_stacks *stacks);
-void			rrb(t_stacks *stacks);
-void			rrr(t_stacks *stacks);
+void	sa(t_stacks *stacks);
+void	sb(t_stacks *stacks);
+void	ss(t_stacks *stacks);
+void	pa(t_stacks *stacks);
+void	pb(t_stacks *stacks);
+void	ra(t_stacks *stacks);
+void	rb(t_stacks *stacks);
+void	rr(t_stacks *stacks);
+void	rra(t_stacks *stacks);
+void	rrb(t_stacks *stacks);
+void	rrr(t_stacks *stacks);
 
 char	**args_validation(int argc, char **argv);
 void	find_duplicates(t_stacks *stacks);

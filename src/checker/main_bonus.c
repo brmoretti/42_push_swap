@@ -6,7 +6,7 @@
 /*   By: brmoretti <brmoretti@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/29 10:01:13 by brmoretti         #+#    #+#             */
-/*   Updated: 2023/12/29 21:18:58 by brmoretti        ###   ########.fr       */
+/*   Updated: 2023/12/30 15:04:18 by brmoretti        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	clear_heap(t_stacks *stacks, t_list *instructions, int error)
 static void	check_if_ok(t_stacks *stacks)
 {
 	t_element	*el;
-	
+
 	if (stacks->b->size != 0)
 	{
 		ft_putstr_fd("KO\n", 1);

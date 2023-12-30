@@ -16,7 +16,6 @@ BUILD_DIR			=	build
 NAME_SRC_DIR		=	$(SRC_DIR)/$(NAME)
 NAME_SRC_FILES		=	algo.c				\
 						conditional_push.c	\
-						debug_tools.c		\
 						err.c				\
 						main.c				\
 						misc.c				\

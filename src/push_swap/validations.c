@@ -6,7 +6,7 @@
 /*   By: brmoretti <brmoretti@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 18:40:49 by brmoretti         #+#    #+#             */
-/*   Updated: 2023/12/28 21:17:54 by brmoretti        ###   ########.fr       */
+/*   Updated: 2023/12/30 12:34:36 by brmoretti        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,6 @@ static char	**create_args_tab(int argc, char **argv)
 		errors(malloc_error);
 	return (tab);
 }
-
 
 char	**args_validation(int argc, char **argv)
 {

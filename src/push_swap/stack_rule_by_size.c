@@ -6,7 +6,7 @@
 /*   By: brmoretti <brmoretti@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/27 12:06:10 by brmoretti         #+#    #+#             */
-/*   Updated: 2023/12/28 08:56:04 by brmoretti        ###   ########.fr       */
+/*   Updated: 2023/12/30 12:34:04 by brmoretti        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ static void	stack_of_three(t_stacks *stacks)
 		sa(stacks);
 	else if (first < second && third < first)
 		rra(stacks);
-	else if (first > third && second <  third)
+	else if (first > third && second < third)
 		ra(stacks);
 	else if (first > second && second > third)
 	{

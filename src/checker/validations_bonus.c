@@ -6,7 +6,7 @@
 /*   By: brmoretti <brmoretti@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 18:40:49 by brmoretti         #+#    #+#             */
-/*   Updated: 2023/12/29 16:28:48 by brmoretti        ###   ########.fr       */
+/*   Updated: 2023/12/30 15:05:47 by brmoretti        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,6 @@ static char	**create_args_tab(int argc, char **argv)
 		errors(malloc_error);
 	return (tab);
 }
-
 
 char	**args_validation(int argc, char **argv)
 {
@@ -97,4 +96,3 @@ void	find_duplicates(t_stacks *stacks)
 		el = el->next;
 	}
 }
-
