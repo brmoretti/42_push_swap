@@ -6,7 +6,7 @@
 /*   By: brmoretti <brmoretti@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/17 12:29:41 by brmoretti         #+#    #+#             */
-/*   Updated: 2023/12/28 14:16:56 by brmoretti        ###   ########.fr       */
+/*   Updated: 2023/12/30 11:25:33 by brmoretti        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,6 @@ int	main(int argc, char **argv)
 	stack_a_fill(tab, &stacks);
 	find_duplicates(&stacks);
 	algo(&stacks);
-	// debug_print_stacks(&stacks);
 	clear_stacks(&stacks, not_error);
 	return (0);
 }
