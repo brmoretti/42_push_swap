@@ -6,14 +6,14 @@
 /*   By: brmoretti <brmoretti@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/17 12:44:20 by brmoretti         #+#    #+#             */
-/*   Updated: 2023/12/28 12:37:22 by brmoretti        ###   ########.fr       */
+/*   Updated: 2023/12/29 17:11:51 by brmoretti        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-# include "../ft_printf/include/ft_printf.h"
+# include "../../ft_printf/include/ft_printf.h"
 # include <limits.h>
 
 enum	e_errors
@@ -22,7 +22,8 @@ enum	e_errors
 	not_digit,
 	integer_overflow,
 	malloc_error,
-	duplicated_value
+	duplicated_value,
+	empty_string
 };
 
 enum	e_move_scheme
@@ -61,11 +62,6 @@ typedef struct s_el_data
 	int				move_scheme;
 }	t_el_data;
 
-void			errors(int error_code);
-char			**args_validation(int argc, char **argv);
-void			find_duplicates(t_stacks *stacks);
-void			clear_stacks(t_stacks *stacks, int error);
-
 void			sa(t_stacks *stacks);
 void			sb(t_stacks *stacks);
 void			ss(t_stacks *stacks);
@@ -77,6 +73,11 @@ void			rr(t_stacks *stacks);
 void			rra(t_stacks *stacks);
 void			rrb(t_stacks *stacks);
 void			rrr(t_stacks *stacks);
+
+void			errors(int error_code);
+char			**args_validation(int argc, char **argv);
+void			find_duplicates(t_stacks *stacks);
+void			clear_stacks(t_stacks *stacks, int error);
 
 void			algo(t_stacks *stacks);
 void			move_a_to_b(t_stacks *stacks, t_el_data *data);

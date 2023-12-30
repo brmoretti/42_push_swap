@@ -6,7 +6,7 @@
 /*   By: brmoretti <brmoretti@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 18:40:49 by brmoretti         #+#    #+#             */
-/*   Updated: 2023/12/28 12:49:46 by brmoretti        ###   ########.fr       */
+/*   Updated: 2023/12/28 21:17:54 by brmoretti        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,10 @@ static char	**create_args_tab(int argc, char **argv)
 	char	**tab;
 	int		i;
 
-	if (argc == 2)
+	tab = NULL;
+	if (argc == 2 && ft_strlen(argv[1]))
 		tab = ft_split(argv[1], ' ');
-	else
+	else if (argc > 2)
 	{
 		tab = ft_calloc(argc, sizeof(char *));
 		if (!tab)

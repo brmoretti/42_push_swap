@@ -1,17 +1,22 @@
 #≻───░⋆ ✪ DEFAULTS ✪ ⋆░──────────────────────────────────────────────────────≺#
 NAME				=	push_swap
+BONUS				=	checker
 CC					=	cc
 CC_FLAGS			=	-Wall	\
 						-Wextra	\
 						-Werror	\
-						-g3		#TEST ONLY REMEMBER TO REMOVE
+						-g3
 
 #≻───░⋆ ✪ PROJECT DIRECTORIES & FILES ✪ ⋆░───────────────────────────────────≺#
 SRC_DIR				=	src
-SRC_FILES			=	algo.c				\
+INCLUDE_DIR			=	include
+BUILD_DIR			=	build
+
+#≻─✪ NAME
+NAME_SRC_DIR		=	$(SRC_DIR)/$(NAME)
+NAME_SRC_FILES		=	algo.c				\
 						conditional_push.c	\
 						debug_tools.c		\
-						depths.c			\
 						err.c				\
 						main.c				\
 						misc.c				\
@@ -24,13 +29,32 @@ SRC_FILES			=	algo.c				\
 						stacks_utils.c		\
 						swap.c				\
 						validations.c
-SRCS				=	$(addprefix $(SRC_DIR)/, $(SRC_FILES))
-INCLUDE_DIR			=	include
-INCLUDE_FILES		=	push_swap.h
-INCLUDES			=	$(addprefix $(INCLUDE_DIR)/, $(INCLUDE_FILES))
-BUILD_DIR			=	build
-OBJS				=	$(SRC_FILES:.c=.o)
-BUILDS				=	$(addprefix $(BUILD_DIR)/, $(OBJS))
+NAME_SRCS			=	$(addprefix $(NAME_SRC_DIR)/, $(NAME_SRC_FILES))
+NAME_INCLUDE_DIR	=	$(INCLUDE_DIR)/$(NAME)
+NAME_INCLUDE_FILES	=	push_swap.h
+NAME_INCLUDES		=	$(addprefix $(NAME_INCLUDE_DIR)/, $(NAME_INCLUDE_FILES))
+NAME_BUILD_DIR		=	$(BUILD_DIR)/$(NAME)
+NAME_OBJS			=	$(NAME_SRC_FILES:.c=.o)
+NAME_BUILDS			=	$(addprefix $(NAME_BUILD_DIR)/, $(NAME_OBJS))
+
+#≻─✪ BONUS
+BONUS_SRC_DIR		=	$(SRC_DIR)/$(BONUS)
+BONUS_SRC_FILES		=	err_bonus.c			\
+						instructions_bonus.c\
+						main_bonus.c		\
+						misc_bonus.c		\
+						push_bonus.c		\
+						rev_rotate_bonus.c	\
+						rotate_bonus.c		\
+						swap_bonus.c		\
+						validations_bonus.c
+BONUS_SRCS			=	$(addprefix $(BONUS_SRC_DIR)/, $(BONUS_SRC_FILES))
+BONUS_INCLUDE_DIR	=	$(INCLUDE_DIR)/$(BONUS)
+BONUS_INCLUDE_FILES	=	checker_bonus.h
+BONUS_INCLUDES		=	$(addprefix $(BONUS_INCLUDE_DIR)/, $(BONUS_INCLUDE_FILES))
+BONUS_BUILD_DIR		=	$(BUILD_DIR)/$(BONUS)
+BONUS_OBJS			=	$(BONUS_SRC_FILES:.c=.o)
+BONUS_BUILDS		=	$(addprefix $(BONUS_BUILD_DIR)/, $(BONUS_OBJS))
 
 #≻───░⋆ ✪ LFTPRINTF ✪ ⋆░─────────────────────────────────────────────────────≺#
 LFTPRINTF_REPO			=	https://github.com/brmoretti/42_ft_printf.git
@@ -54,23 +78,42 @@ DEFAULT 			=	\033[0:0m
 
 all: $(NAME)
 
-bonus: $(NAME)
+bonus: $(BONUS)
 
-$(NAME): $(LFTPRINTF_LIB) $(BUILD_DIR) $(BUILDS) $(INCLUDES)
-	@ $(CC) -o $@			\
-	  $(BUILDS)				\
-	  -I./$(INCLUDE_DIR)	\
-	  $(LFTPRINTF_CC)		\
+$(NAME): $(LFTPRINTF_LIB) $(BUILD_DIR) $(NAME_BUILDS) $(NAME_INCLUDES)
+	@ $(CC) -o $@					\
+	  $(NAME_BUILDS)				\
+	  -I./$(NAME_INCLUDE_DIR)		\
+	  $(LFTPRINTF_CC)				\
 	  $(CC_FLAGS)
-	  @ printf "$(GREEN)$@$(DEFAULT) successfully generated\n"
+	@ printf "$(GREEN)$@$(DEFAULT) successfully generated\n"
+
+$(BONUS): $(LFTPRINTF_LIB) $(BUILD_DIR) $(BONUS_BUILDS) $(BONUS_INCLUDES)
+	@ $(CC) -o $@					\
+	  $(BONUS_BUILDS)				\
+	  -I./$(BONUS_INCLUDE_DIR)		\
+	  $(LFTPRINTF_CC)				\
+	  $(CC_FLAGS)
+	@ printf "$(GREEN)$@$(DEFAULT) successfully generated\n"
 
 $(BUILD_DIR):
-	@ mkdir $(BUILD_DIR)
+	@ mkdir $(BUILD_DIR) &&	\
+	  cd $(BUILD_DIR) &&	\
+	  mkdir $(NAME) &&		\
+	  mkdir $(BONUS)
 
-$(BUILD_DIR)/%.o: $(SRC_DIR)/%.c $(INCLUDES)
+$(NAME_BUILD_DIR)/%.o: $(NAME_SRC_DIR)/%.c $(NAME_INCLUDES)
 	@ printf "$(MAGENTA)$< $(BLUE)->$(GREEN) $@$(DEFAULT)\n"
 	@ $(CC) -c $<					\
-	  -I./$(INCLUDE_DIR)			\
+	  -I./$(NAME_INCLUDE_DIR)		\
+	  -I./$(LFTPRINTF_INCLUDE_DIR)	\
+	  -o $@							\
+	  $(CC_FLAGS)
+
+$(BONUS_BUILD_DIR)/%.o: $(BONUS_SRC_DIR)/%.c $(BONUS_INCLUDES)
+	@ printf "$(MAGENTA)$< $(BLUE)->$(GREEN) $@$(DEFAULT)\n"
+	@ $(CC) -c $<					\
+	  -I./$(BONUS_INCLUDE_DIR)		\
 	  -I./$(LFTPRINTF_INCLUDE_DIR)	\
 	  -o $@							\
 	  $(CC_FLAGS)
@@ -80,6 +123,7 @@ clean: clean_lftprintf
 
 fclean: fclean_lftprintf clean
 	@ rm -rf $(NAME)
+	@ rm -rf $(BONUS)
 
 re: fclean all
 

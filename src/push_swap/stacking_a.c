@@ -6,7 +6,7 @@
 /*   By: brmoretti <brmoretti@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/27 17:38:09 by brmoretti         #+#    #+#             */
-/*   Updated: 2023/12/27 22:32:08 by brmoretti        ###   ########.fr       */
+/*   Updated: 2023/12/28 20:59:07 by brmoretti        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ static void	find_and_deliver(t_stacks *stacks, int nb_to_push)
 	t_element	*next_el;
 
 	el = stacks->a->first;
+	next_el = el->next;
 	while (el)
 	{
 		next_el = el->next;

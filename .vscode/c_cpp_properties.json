@@ -5,6 +5,8 @@
             "includePath": [
                 "${workspaceFolder}/**",
                 "${workspaceFolder}/include/**",
+                "${workspaceFolder}/include/checker/**",
+                "${workspaceFolder}/include/push_swap/**",
                 "${workspaceFolder}/ft_printf/include/**"
             ],
             "defines": [],
