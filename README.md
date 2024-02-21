@@ -8,7 +8,7 @@
 
 This project is about sorting data on a stack, with a limited set of instructions, using the lowest possible number of actions. To make this happen, it was needded to consider a variety of algorithms and choose the one that best fit the project requirements.
 
-![Output](https://s9.gifyu.com/images/SFkdq.gif)
+![](visualizer.gif)
 Credits to [o-reo](https://github.com/o-reo) for this amazing visualization provided by the [push_swap_visualizer](https://github.com/o-reo/push_swap_visualizer).
 
 ## Table of Contents
@@ -49,3 +49,7 @@ To check if the instructions sort the list, run the following command:
 ```bash
 ARG="4 67 3 87 23"; ./push_swap $ARG | ./checker $ARG
 ```
+
+## Credits
+
+This project is an adaptation with some optimizations from [this](https://medium.com/@ayogun/push-swap-c1f5d2d41e97) Medium article.
