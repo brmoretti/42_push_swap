@@ -75,7 +75,7 @@ DEFAULT 			=	\033[0:0m
 #≻───░⋆ ✪ RULES ✪ ⋆░─────────────────────────────────────────────────────────≺#
 .PHONY: all bonus clean fclean clear re
 
-all: $(NAME)
+all: $(NAME) $(BONUS)
 
 bonus: $(BONUS)
 
